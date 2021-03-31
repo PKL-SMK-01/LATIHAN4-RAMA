@@ -1,0 +1,51 @@
+<div class="head container mt-4">
+    <header class="bg-dark text-white p-2 mb-2 text-center rounded">
+        <h1>Login</h1>
+    </header>
+
+    <div class="jumbotron ">
+        <form (ngSubmit)="submit()" [formGroup]="form">
+
+            <!-- FORM EMAIL ====================== -->
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                formControlName="email" name="email" [ngClass]="{'is-invalid' : submitted && f.email.errors}">
+
+
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">
+                        email is requaired!
+                    </div>
+
+                    <div *ngIf="f.email.errors.email">
+                        Email must be a valid email address!
+                    </div>
+                </div>
+            </div>
+
+            <!-- FORM PASSWORD================ -->
+            <div class="mb-3 form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" 
+                [ngClass]="{'is-invalid' : submitted && f.password.errors}">
+
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">
+                        password is requaired
+                    </div>
+
+                    <div *ngIf="f.password.errors.minlength">
+                        Password must be atleast 6 characters
+                    </div>
+                </div>
+                
+            </div>
+
+            <button type="submit" class="btn btn-secondary mr-2 col-md-12">Log In</button>
+            <hr>
+            <p class="text-center">didn't have Account? click <a routerLink="/register"> <em>Register</em> </a></p>
+
+        </form>
+    </div>
+</div>
